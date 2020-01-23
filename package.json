@@ -1,0 +1,22 @@
+{
+  "name": "mi-simon-dice",
+  "version": "1.0.0",
+  "description": "practica de js, html y css haciendo un simon dice",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nmpellecchia/mi-simon-dice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nmpellecchia/mi-simon-dice/issues"
+  },
+  "homepage": "https://github.com/nmpellecchia/mi-simon-dice#readme",
+  "dependencies": {
+    "bootstrap": "^4.4.1"
+  }
+}
