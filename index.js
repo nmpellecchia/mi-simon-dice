@@ -1,6 +1,9 @@
 let secuenciaMaquina = [];
 let secuenciaUsuario = [];
 
+const estadoTurnoMaquina = 'La máquina está jugando';
+const estadoTurnoJugador = 'Su turno';
+
 let ronda = 0
 
 document.querySelector('button[type=button]').onclick = comenzarJuego;
@@ -17,11 +20,11 @@ function comenzarJuego() {
 function reiniciarEstados() {
     secuenciaMaquina = [];
     secuenciaUsuario = [];
-    ronda= 0;
+    ronda = 0;
 };
 
 function manejarRonda() {
-    actualizarEstado('La máquina está jugando');
+    actualizarEstado(estadoTurnoMaquina);
     bloquearInputUsuario();
     
     const $nuevoCuadro = seleccionarCuadroAleatorio();
@@ -37,7 +40,7 @@ function manejarRonda() {
     });
 
     setTimeout(function(){
-        actualizarEstado('Su turno');
+        actualizarEstado(estadoTurnoJugador);
         desbloquearInputUsuario();
     }, RETRASO_TURNO_JUGADOR);
 
@@ -56,10 +59,16 @@ function actualizarNumeroRonda(numeroRonda) {
 
 function bloquearInputUsuario() {
     const $cuadros = document.querySelectorAll('.cuadro');
+    const $estadoActual = document.querySelector('#estado').textContent;
 
     $cuadros.forEach(function($cuadro) {
         $cuadro.onclick = function() {};
     });
+
+    if ($estadoActual === estadoTurnoMaquina) {
+        document.querySelector('button[type=button]').onclick = function(){};
+    };
+
 };
 
 function seleccionarCuadroAleatorio () {
@@ -93,12 +102,22 @@ function manejarInputUsuario(event) {
     const cuadroMaquina = secuenciaMaquina[secuenciaUsuario.length - 1];
 
     if($cuadro.id !== cuadroMaquina.id) {
-        actualizarEstado('¡Perdiste! Dale a comenzar para jugar otra vez');
-        bloquearInputUsuario();
+        perderJuego();
+        return false;
     };
 
     if(secuenciaUsuario.length === secuenciaMaquina.length) {
         bloquearInputUsuario()
         setTimeout(manejarRonda, 1000);
     };
+};
+
+function perderJuego () {
+    const estadoJugadorPerdio = 'Perdiste! Dale a comenzar para jugar otra vez';
+
+    actualizarEstado(estadoJugadorPerdio);
+    bloquearInputUsuario();
+    
+    document.querySelector('button[type=button]').onclick = comenzarJuego;
+
 };
