@@ -7,62 +7,84 @@
     <title>Simón Dice</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <style type="text/css">
+
+      body {
+        background-color: #010011;
+      }
+
+      #info-panel {
+        padding: 44px;
+      }
+
+      .ronda {
+        color: white;
+      }
+
         .cuadro {
-            height: 250px;
-            border-color: white;
+            height: 260px;
+            border-color: #010011;
             border-width: 5px;
             border-style: solid;
-            border-radius: 20px;
             opacity: 0.5;
             font-size: 0;
             transition: opacity 500ms;
         }
 
         #cuadro-1 {
-            background-color: red;
+            background-color: cyan;
+            border-radius: 300px 10px 10px 10px;
         }
 
         #cuadro-2 {
-            background-color: yellow;
+            background-color: orange;
+            border-radius: 10px 300px 10px 10px;
         }
 
         #cuadro-3 {
-            background-color: green;
+            background-color: lawngreen;
+            border-radius: 10px 10px 10px 300px;
         }
 
         #cuadro-4 {
-            background-color: blue;
+            background-color: magenta;
+            border-radius: 10px 10px 300px 10px;
         }
+
+        .padding-0{
+          padding-right:0;
+          padding-left:0;
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="row">
+        <div class="row" id="info-panel">
           <div class="col-sm-9">
             <div class="alert alert-info" role="alert" id="estado"><!-- --></div>
           </div>
           <div class="col-sm-2">
-            <p>Ronda Nº <strong id="numero-ronda">0</strong></p>
+            <p class="ronda">Ronda Nº <strong class="ronda" id="numero-ronda">0</strong></p>
           </div>
           <div class="col-sm-1">
-            <button type="button" class="btn btn-outline-dark">Comenzar!</button>
+            <button type="button" class="btn btn-outline-light">Comenzar!</button>
           </div>
         </div>
       </div>
       <div class="container" id="tablero">
         <div class="row">
-          <div class="col-sm">
+          <div class="col-sm padding-0">
             <div class="cuadro" id="cuadro-1">A</div>
           </div>
-          <div class="col-sm">
+          <div class="col-sm padding-0">
             <div class="cuadro" id="cuadro-2">B</div>
           </div>
         </div>
         <div class="row">
-          <div class="col-sm">
+          <div class="col-sm padding-0">
             <div class="cuadro" id="cuadro-3">C</div>
           </div>
-          <div class="col-sm">
+          <div class="col-sm padding-0">
             <div class="cuadro" id="cuadro-4">D</div>
           </div>
         </div>
