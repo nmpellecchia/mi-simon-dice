@@ -13,6 +13,7 @@ actualizarNumeroRonda('-');
 bloquearInputUsuario();
 
 function comenzarJuego() {
+    document.querySelector('#estado').className = "alert alert-info";
     reiniciarEstados();
     manejarRonda();
 };
@@ -115,6 +116,7 @@ function manejarInputUsuario(event) {
 function perderJuego () {
     const estadoJugadorPerdio = 'Perdiste! Dale a comenzar para jugar otra vez';
 
+    document.querySelector('#estado').className = "alert alert-danger";
     actualizarEstado(estadoJugadorPerdio);
     bloquearInputUsuario();
     
