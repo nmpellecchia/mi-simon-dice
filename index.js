@@ -25,6 +25,8 @@ function reiniciarEstados() {
 };
 
 function manejarRonda() {
+    document.querySelector('button[type=button]').className = "oculto";
+    
     actualizarEstado(estadoTurnoMaquina);
     bloquearInputUsuario();
     
@@ -114,12 +116,14 @@ function manejarInputUsuario(event) {
 };
 
 function perderJuego () {
-    const estadoJugadorPerdio = 'Perdiste! Dale a comenzar para jugar otra vez';
+    const estadoJugadorPerdio = 'Perdiste! Dale a reiniciar para jugar otra vez';
 
     document.querySelector('#estado').className = "alert alert-danger";
     actualizarEstado(estadoJugadorPerdio);
     bloquearInputUsuario();
     
+    document.querySelector('button[type=button').className = "btn btn-outline-light";
+    document.querySelector('button[type=button]').textContent = 'Reiniciar';
     document.querySelector('button[type=button]').onclick = comenzarJuego;
 
 };
